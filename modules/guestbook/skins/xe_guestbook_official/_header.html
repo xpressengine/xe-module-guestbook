@@ -1,0 +1,15 @@
+<!--%import("css/guestbook.css")-->
+
+<div class="guestbook">
+    <div class="guestbookHeader">
+		<!--@if($module_info->mid)-->
+		<div class="guestbookTitle">
+			<h2 class="guestbookTitleText">Guestbook</h2>
+			<!--@if($is_logged)-->
+				<!--@if($logged_info->is_admin == 'Y')-->
+					<a class="setup" href="{getUrl('act','dispGuestbookAdminGuestbookInfo')}">{$lang->cmd_setup}</a>
+				<!--@end-->
+            <!--@end-->
+		</div>
+		<!--@end-->
+    </div>

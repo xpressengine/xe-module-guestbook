@@ -1,0 +1,8 @@
+<query id="deleteGuestbookItem" action="delete">
+    <tables>
+        <table name="guestbook_item" />
+    </tables>
+    <conditions>
+        <condition operation="in" column="guestbook_item_srl" var="guestbook_item_srl" notnull="notnull" />
+    </conditions>
+</query>
