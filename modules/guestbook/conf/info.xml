@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module version="0.2">
-    <title xml:lang="ko">Guestbook</title>
-    <title xml:lang="zh-CN">Guestbook</title>
+    <title xml:lang="ko">방명록</title>
+    <title xml:lang="zh-CN">留言簿</title>
     <title xml:lang="en">Guestbook</title>
-    <description xml:lang="ko">Provide Guestbook module to XE users, contains administrator functions such as create, delete, manage Guestbook module etc.</description>
+    <description xml:lang="ko">사용자에게 방명록을 제공하며, 관리자는 방명록 생성, 삭제, 관리가 가능합니다.</description>
     <description xml:lang="zh-CN">给用户提供‘留言簿’功能，将包含‘留言簿’模块的生成/删除及管理等管理员功能。</description>
     <description xml:lang="en">Provide Guestbook module to XE users, contains administrator functions such as create, delete, manage Guestbook module etc.</description>
     <version>1.0</version>
