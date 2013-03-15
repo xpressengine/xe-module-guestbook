@@ -1,0 +1,16 @@
+<query id="getChildGuestbookItemList" action="select">
+    <tables>
+        <table name="guestbook_item" alias="guestbook" />
+    </tables>
+    <columns>
+        <column name="*" />
+    </columns>
+
+    <conditions>
+        <condition operation="equal" column="module_srl" var="module_srl" filter="number" notnull="notnull"/>
+		<condition operation="equal" column="parent_srl" var="parent_srl" filter="number" notnull="notnull" pipe="and"/>
+    </conditions>
+    <navigation>
+		<index var="sort_index" default="guestbook.regdate" order="order_type" />
+    </navigation>
+</query>

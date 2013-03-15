@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+    <title xml:lang="ko">Guestbook Red Fire 모바일 스킨</title>
+    <title xml:lang="zh-CN">Guestbook Red Fire 移动皮肤</title>
+	<title xml:lang="en">Guestbook Red Fire Mobile Skin</title>
+    <description xml:lang="ko">
+        전체적으로 붉은색을 사용하고 다양한 환경에 적용할수 있도록 하였습니다. 카테고리로 접근하는 형식으로 쉽게 내용에 접근할 수 있습니다.
+		NHN (developers@xpressengine.com)
+    </description>
+    <description xml:lang="zh-CN">
+        皮肤整体色调以红色为主，显示出沉稳大方，以便适应于不同的模板风格。采用分类标签的布局形式，方便用户方查找、咨询留言。
+        NHN (developers@xpressengine.com)
+    </description>
+    <description xml:lang="en">
+        The skin utilizes red as the basic color, employs a concise tag layout style, make users easy to seach guest's messages.  
+        NHN (developers@xpressengine.com)
+    </description>
+    <version>0.1</version>
+    <date>2012-06-28</date>
+
+    <author email_address="developers@xpressengine.com" link="http://xpressengine.com/">
+        <name xml:lang="ko">NHN</name>
+		<name xml:lang="en">NHN</name>
+		<name xml:lang="zh-CN">NHN</name>
+    </author>
+
+    <license>GPL</license>
+
+</skin>

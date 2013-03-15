@@ -1,0 +1,17 @@
+<load target="css/guestbook_admin.css" />
+
+<h1 class="h1">{$lang->guestbook_management}</h3>
+
+<p>{nl2br($lang->about_guestbook)}</p>
+
+<h2 class="h2" cond="$module_info->mid">{$module_info->mid} <span cond="$module_info->is_default=='Y'" class="bracket">({$lang->is_default})</span> <span class="vr">|</span> <a href="{getSiteUrl($module_info->domain,'','mid',$module_info->mid)}" onclick="window.open(this.href); return false;" class="view">View</a></h2>
+<div cond="$module_info" class="cnb">
+    <ul>
+        <li cond="$module=='admin'" class="active"|cond="$act=='dispGuestbookAdminContent'"><a href="{getUrl('act','dispGuestbookAdminContent','module_srl','')}">{$lang->cmd_guestbook_list}</a></li>
+        <li cond="$module!='admin'"><a href="{getUrl('act','')}">{$lang->cmd_back}</a></li>
+        <li class="active"|cond="$act=='dispGuestbookAdminGuestbookInfo'||$act=='dispGuestbookAdminInsertGuestbook'"><a href="{getUrl('act','dispGuestbookAdminGuestbookInfo','type','')}"><!--@if($module_srl)-->{$lang->cmd_view_info}<!--@else-->{$lang->cmd_create_guestbook}<!--@end--></a></li>
+		<li class="active"|cond="$act=='dispGuestbookAdminGrantInfo'"><a href="{getUrl('act','dispGuestbookAdminGrantInfo')}">{$lang->cmd_manage_grant}</a></li>
+    </ul>
+</div>
+
+

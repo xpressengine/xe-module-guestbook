@@ -1,0 +1,12 @@
+<query id="getMemberInfo" action="select">
+    <tables>
+        <table name="member" />
+    </tables>
+    <columns>
+        <column name="*" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="email_address" var="email_address" notnull="notnull" pipe="and"/>
+		<condition operation="equal" column="password" var="password" notnull="notnull" pipe="and"/>
+    </conditions>
+</query>

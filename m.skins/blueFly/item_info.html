@@ -1,0 +1,114 @@
+<include target="_header.html" />
+
+{@ 
+	$oMemberModel = &getModel('member');
+	$memberConfig = $oMemberModel->getMemberConfig();
+	$memberImage = $oMemberModel->getProfileImage($guestbook_item->member_srl);
+}
+<div class="mod_containter">
+	<div class="message_cont">
+		<div class="user_pic">
+			<a href="#">
+				<img cond="$memberImage" src="{$memberImage->src}"|cond="$memberConfig->profile_image == 'Y'"  width="48" height="54" alt="Platform Develpment Center" class="author_img" />
+				<img cond="!($memberImage)" border="0" src="./img/default_member.gif" width="48" height="54"  alt="Platform Develpment Center"  class="author_img" />
+			</a>
+		</div>
+		<div class="user_message">
+			<dl>
+			<dt><a href="#">{$guestbook_item->nick_name}</a></dt>
+			<dd><p class="item_content">{$guestbook_item->content}</p></dd>
+			<dd><span class="date">{zdate($guestbook_item->regdate,'Y-m-d')}</span><span class="time">{zdate($guestbook_item->regdate,'H:i')}</span></dd>
+			<dd class="function_area">
+				<ul class="btn_area">
+					<li class="btn_add" cond="$grant->write_reply"><a href="javascript:void()" onclick="return false">{$lang->cmd_reply}</a></li>
+					<block cond="$guestbook_item->member_srl || $grant->manager">
+						<block cond="$grant->manager || $logged_info->member_srl == $guestbook_item->member_srl">
+							<li class="btn_del"><a href="javascript:void()" onclick="return false" data="{$guestbook_item->guestbook_item_srl}">{$lang->cmd_delete}</a></li>
+						</block>
+						<block cond="$logged_info->member_srl == $guestbook_item->member_srl">
+							<li class="btn_modify"><a href="{getUrl('act','dispInsertGuestbookItem','guestbook_item_srl', $guestbook_item->guestbook_item_srl)}" >{$lang->cmd_modify}</a></li>
+						</block>
+					</block>
+				</ul>
+			</dd>
+			</dl>
+		</div>
+		<div class="confirm" id="{$guestbook_item->guestbook_item_srl}">
+			<p>Are you sure to delete this message?</p>
+			<div>
+				<a href="#" class="btn_cancel2"><img src="img/btn_cls.png" width="120" height="32" alt="cancel"/></a>
+				<a href="{getUrl('','mid',$mid)}" data="{$guestbook_item->guestbook_item_srl}" class="btn_del2" onclick="deleteGuestbookItem({$guestbook_item->guestbook_item_srl});"><img src="img/btn_del2.png" width="120" height="32" alt="delete"/></a>
+			</div>
+		</div>
+	</div>
+	<div class="write_area" style="display:none">
+		<form method="post" ruleset="insertGuestbookitem"  action="./"  id="fo_guestbookitem_reply">
+			<input name="act"  type="hidden" value="procGuestbookInsertGuestbookItem" />
+			<input name="mid" type="hidden" value="{$mid}" />
+			<input name="parent_srl"  type="hidden" value="{$guestbook_item->guestbook_item_srl}" />
+			<input name="returnAct" type="hidden" value="displayItemInfo" />
+			<fieldset>
+				<legend class="arrow_up">submit comment</legend>
+				<block cond="$is_logged">
+					<input name="member_srl" type="hidden" value="{$logged_info->member_srl}" />
+				</block>
+				<block cond="!($is_logged)">
+					<div class="form_element">
+						<input type="text" placeholder="Username" class="input_txt" name="user_name"/>
+						<input type="text" placeholder="Email Address" class="input_txt" name="email_address"/>
+						<input type="password" placeholder="Password" class="input_pwd" name="password"/>
+					</div>
+				</block>
+				<div class="form_element">
+					<textarea cols="30" rows="5" placeholder="Comment" class="textarea"  name="content"></textarea>
+				</div>
+				<div class="btn_area2">
+					<input type="submit" value="Comment" class="btn_submit">
+					<a href="javascript:void()" class="btn_cls">Cancel</a>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	<ul class="comment_list op">
+		<li loop="$comment_list => $key, $comment" class="comment_li">
+		{@ 
+			$memberImage = $oMemberModel->getProfileImage($comment->member_srl);
+		}
+		<div class="user_pic comment_pic">
+			<a href="#">
+				<img cond="$memberImage" src="{$memberImage->src}"|cond="$memberConfig->profile_image == 'Y'" width="39" height="44" alt="Platform Develpment Center" class="author_img">
+				<img cond="!($memberImage)" border="0" src="./img/default_member.gif" width="39" height="44"  alt="Platform Develpment Center"  class="author_img" />
+			</a>
+		</div>
+		<div class="user_message comment_message">
+			<dl>
+			<dt><a href="#">{$comment->nick_name}</a></dt>
+			<dd class="message_detail comment_detail"><p>{$comment->content}</p></dd>
+			<dd><span class="date">{zdate($comment->regdate,'Y-m-d')}</span><span class="commentTime">{zdate($comment->regdate,'H:i')}</span></dd>
+			<dd class="comment_area">
+				<block cond="$comment->member_srl || $grant->manager">
+					<ul class="btn_area">
+						<block cond="$grant->manager || $logged_info->member_srl == $comment->member_srl">
+							<li class="btn_del"><a href="#" onclick="return false;" data="{$comment->guestbook_item_srl}">{$lang->cmd_delete}</a></li>
+						</block>
+						<block cond="$logged_info->member_srl == $comment->member_srl">
+							<li class="btn_modify"><a href="{getUrl('act','dispInsertGuestbookItem','guestbook_item_srl', $comment->guestbook_item_srl)}">{$lang->cmd_modify}</a></li>
+						</block>
+					</ul>
+				</block>
+			</dd>
+			</dl>
+		</div>
+		<div class="confirm" id="{$comment->guestbook_item_srl}">
+			<p>Are you sure to delete this comment?</p>
+			<div>
+				<a href="#" class="btn_cancel2"><img src="img/btn_cls.png" width="120" height="32" alt="cancel"/></a>
+				<a href="#" data="{$comment->guestbook_item_srl}" class="btn_del2" onclick="deleteGuestbookItem({$comment->guestbook_item_srl}); return false;"><img src="img/btn_del2.png" width="120" height="32" alt="delete"/></a>
+			</div>
+		</div>
+	</li>
+	</ul>
+	<div class="view_more_item_info">
+		<a href="javascript:void()" onclick="return false" id="getMore">More<span class="more"></span></a><a href="javascript:window.scroll(0,0)" class="top">Top</a>
+	</div>
+</div>

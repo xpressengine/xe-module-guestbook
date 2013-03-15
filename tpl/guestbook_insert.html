@@ -1,0 +1,147 @@
+<include target="header.html" />
+
+<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+
+<form action="./" method="post" ruleset="insertGuestbook" enctype="multipart/form-data" id="fo_insert_guestbook">
+<input type="hidden" name="act" value="procGuestbookAdminInsertGuestbook" />
+<input type="hidden" name="page" value="{$page}" />
+<input type="hidden" name="module_srl" value="{$module_info->module_srl}" />
+	<div class="table">
+		<table cellspacing="0" class="rowTable">
+
+		<input cond="$logged_info->is_admin!='Y'" type="hidden" name="guestbook_name" value="{$module_info->mid}" />
+		<tr cond="$logged_info->is_admin=='Y'">
+			<th scope="row"><div>{$lang->mid}</div></th>
+			<td>
+				<input type="text" name="guestbook_name" value="{$module_info->mid}" class="inputTypeText w200" />
+				<p>{$lang->about_mid}</p>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"><div>{$lang->module_category}</div></th>
+			<td>
+				<select name="module_category_srl">
+					<option value="0">{$lang->notuse}</option>
+					<option loop="$module_category => $key, $val" value="{$key}" selected="selected"|cond="$module_info->module_category_srl==$key">{$val->title}</option>
+				</select>
+				<p>{$lang->about_module_category}</p>
+			</td>
+		</tr>
+
+		<tr>
+			<th scope="row"><div>{$lang->browser_title}</div></th>
+			<td>
+				<input type="text" name="browser_title" value="{htmlspecialchars($module_info->browser_title)}"  class="inputTypeText w400" id="browser_title"/>
+				<a href="{getUrl('','module','module','act','dispModuleAdminLangcode','target','browser_title')}" onclick="popopen(this.href);return false;" class="buttonSet buttonSetting" title="{$lang->cmd_find_langcode}"><span>{$lang->cmd_find_langcode}</span></a>
+				<p>{$lang->about_browser_title}</p>
+			</td>
+		</tr>
+
+		<tr>
+			<th scope="row"><div>{$lang->layout}</div></th>
+			<td>
+				<select name="layout_srl">
+				<option value="0">{$lang->notuse}</option>
+				<option loop="$layout_list => $key, $val" value="{$val->layout_srl}" selected="selected"|cond="$module_info->layout_srl==$val->layout_srl">{$val->title} ({$val->layout})</option>
+				</select>
+				<p>{$lang->about_layout}</p>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"><div>{$lang->skin}</div></th>
+			<td>
+				<select name="skin">
+					<option loop="$skin_list => $key,$val" value="{$key}" selected="selected"|cond="$module_info->skin==$key ||(!$module_info->skin && $key=='xe_guestbook_official')" >{$val->title}</option>
+				</select>
+				<p>{$lang->about_skin}</p>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"><div>{$lang->mobile_view}</div></th>
+			<td>
+			<input type="checkbox" name="use_mobile" id="use_mobile" value="Y" checked="checked"|cond="$module_info->use_mobile == 'Y'" /> 
+			<p>{$lang->about_mobile_view}</p>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"><div>{$lang->mobile_layout}</div></th>
+			<td>
+				<select name="mlayout_srl" id="layout_srl">
+					<option value="0">{$lang->notuse}</option>
+					<option loop="$mlayout_list => $key, $val" value="{$val->layout_srl}" selected="selected"|cond="$module_info->mlayout_srl== $val->layout_srl">{$val->title} ({$val->layout})</option>
+				</select>
+			</td>
+			<p class="desc">{$lang->about_layout}</p>
+		</tr>
+		<tr>
+			<th scope="row"><div>{$lang->mobile_skin}</div></th>
+			<td>
+				<select name="mskin" id="mskin">
+					<option loop="$mskin_list=> $key, $val" value="{$key}" selected="selected"|cond="$module_info->mskin== $key || (!$module_info->skin && $key=='xe_faq')">{$val->title}</option>
+				</select>
+			</td>
+			<p class="desc">{$lang->about_skin}</p>
+		</tr>
+		<tr>
+			<th scope="row"><div>{$lang->order_target}</div></th>
+			<td>
+				<select name="order_target">
+					<option loop="$order_target => $key, $val" value="{$key}" selected="selected"|cond="$module_info->order_target == $key">{$val}</option>
+				</select>
+
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"><div>{$lang->order_type}</div></th>
+			<td>
+				<select name="order_type">
+					<option value="asc" selected="selected"|cond="$module_info->order_type != 'desc'" >{$lang->order_asc}</option>
+					<option value="desc" selected="selected"|cond="$module_info->order_type == 'desc'">{$lang->order_desc}</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"><div>{$lang->list_count}</div></th>
+			<td>
+				<input type="text" name="list_count" value="{$module_info->list_count?$module_info->list_count:20}"  class="inputTypeText" />
+				<p>{$lang->about_list_count}</p>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"><div>{$lang->page_count}</div></th>
+			<td>
+				<input type="text" name="page_count" value="{$module_info->page_count?$module_info->page_count:10}"  class="inputTypeText" />
+				<p>{$lang->about_page_count}</p>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"><div>{$lang->header_text}</div></th>
+			<td>
+				{@$use_multilang_textarea = true}
+				<textarea name="header_text" id="header_text" class="vLang" rows="8" cols="42">{$module_info->header_text}</textarea>
+				<p>{$lang->about_header_text}</p>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"><div>{$lang->footer_text}</div></th>
+			<td>
+				<textarea name="footer_text" id="footer_text" class="vLang" rows="8" cols="42">{$module_info->footer_text}</textarea>
+				<p>{$lang->about_footer_text}</p>
+			</td>
+		</tr>
+		<tr>
+			<th scope="row"><div>{$lang->description}</div></th>
+			<td>
+				<textarea name="description" class="inputTypeTextArea fullWidth" style="width:60%;height:100px">{htmlspecialchars($module_info->description)}</textarea>
+				<p>{$lang->about_description}</p>
+			</td>
+		</tr>
+		</table>
+	</div>
+	<div class="btnArea">
+		<span class="btn"><input type="submit" value="{$lang->cmd_registration}" accesskey="s" /></span>
+		<span class="btn"><a href="{getUrl('act','dispGuestbookAdminContent','module_srl','')}">{$lang->cmd_back}</a></span>
+	</div>
+</form>
