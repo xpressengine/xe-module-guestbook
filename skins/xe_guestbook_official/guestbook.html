@@ -106,7 +106,7 @@
 								</block>
 							</li>
 						</ul>
-						<script type="text/javascript">
+						<script>
 							jQuery(function($){
 								var ul_id = '#{$val->guestbook_item_srl}_re';
 								$(ul_id).find('li').last().attr('class', 'last');
@@ -158,7 +158,7 @@
 	<a href="{getUrl('page',$page_navigation->last_page,'question_srl','','division',$division,'last_division',$last_division)}" class="nextEnd">{$lang->last_page}</a>
 </div>
 
-<script type="text/javascript">
+<script>
 jQuery(function(){
 		jQuery('input:text,input:password')
 		.focus(function(e){
