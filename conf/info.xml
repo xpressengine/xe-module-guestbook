@@ -7,7 +7,7 @@
     <description xml:lang="zh-CN">给用户提供‘留言簿’功能，将包含‘留言簿’模块的生成/删除及管理等管理员功能。</description>
     <description xml:lang="en">Provide Guestbook module to XE users, contains administrator functions such as create, delete, manage Guestbook module etc.</description>
     <version>1.7.0</version>
-    <date>2012-11-15</date>
+    <date>2013-03-18</date>
     <category>service</category>
 
     <author email_address="developers@xpressengine.com" link="http://www.xpressengine.com/">
