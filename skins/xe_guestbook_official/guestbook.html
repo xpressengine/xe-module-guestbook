@@ -81,10 +81,10 @@
 					<div class="meta">
 						<h4 class="author">
 							<a cond="$val->homepage" href="{$val->homepage}" onclick="window.open(this.href);return false;" class="member_{$val->member_srl}">{$val->nick_name}</a>
-							<span cond="!($val->homepage)" class="member_{$val->member_srl}">
+							<a href="#popup_menu_area" cond="!$val->homepage" class="member_{$val->member_srl}">
 								<block cond="$val->nick_name">{$val->nick_name}</block>
 								<block cond="!$val->nick_name">{$val->email_address}</block>
-							</span>
+							</a>
 						</h4>
 						<span class="date">{zdate($val->regdate,'Y.m.d')} <span class="hhmm">{zdate($val->regdate,'H:i')}</span></span>
 						<ul class="reAction" id="{$val->guestbook_item_srl}_re">
@@ -113,7 +113,7 @@
 							});
 						</script>
 					</div>
-					<div class="data textyleContent">
+					<div class="data">
 						{$val->content}
 					</div>
 				</div>

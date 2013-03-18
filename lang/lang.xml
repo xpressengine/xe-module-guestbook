@@ -30,7 +30,7 @@
 		<value xml:lang="zh-CN"><![CDATA[新建留言簿]]></value>
 		<value xml:lang="TR"><![CDATA[Ziyaretçi Defteri Oluştur]]></value>
 	</item>
-	<item name="cmd_view_info">
+	<item name="cmd_guestbook_info">
 		<value xml:lang="ko"><![CDATA[방명록 정보]]></value>
 		<value xml:lang="en"><![CDATA[Guestbook Info]]></value>
 		<value xml:lang="zh-CN"><![CDATA[留言簿信息]]></value>
