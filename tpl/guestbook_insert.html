@@ -1,5 +1,5 @@
 <include target="header.html" />
-<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+<div cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == 'modules/guestbook/tpl/index/1'" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
 	<p>{$XE_VALIDATOR_MESSAGE}</p>
 </div>
 <form action="./" method="post" ruleset="insertGuestbook" enctype="multipart/form-data" id="fo_insert_guestbook" class="x_form-horizontal">
@@ -7,6 +7,7 @@
 	<input type="hidden" name="page" value="{$page}" />
 	<input type="hidden" name="module_srl" value="{$module_info->module_srl}" />
 	<input cond="$logged_info->is_admin!='Y'" type="hidden" name="guestbook_name" value="{$module_info->mid}" />
+	<input type="hidden" name="xe_validator_id" value="modules/guestbook/tpl/index/1" />
 	<div class="x_control-group" cond="$logged_info->is_admin=='Y'">
 		<label for="guestbook_name" class="x_control-label">{$lang->mid}</label>
 		<div class="x_controls">
@@ -144,7 +145,7 @@
 		</div>
 	</div>
 	<div class="btnArea">
-		<a href="{getUrl('act','dispGuestbookAdminContent','module_srl','')}" class="x_btn x_pull-left">{$lang->cmd_back}</a>
+		<a cond="$module === 'admin'" href="{getUrl('act','dispGuestbookAdminContent','module_srl','')}" class="x_btn x_pull-left">{$lang->cmd_back}</a>
 		<span class="x_pull-right">
 			<input type="submit" value="{$lang->cmd_registration}" class="x_btn x_btn-primary" />
 		</span>

@@ -13,7 +13,7 @@
 	<h2 class="mod_title"><a href="{getUrl('','mid',$mid)}">XE Guestbook</a></h2>
 	<!-- search box -->
     <button class="btn_srch">search</button>
-    <form action="./" method="get" id="fo_search" class="srch">
+    <form action="./" method="get" id="fo_search" class="srch" no-error-return-url="true">
         <fieldset>
         <legend>Search</legend>
             <input cond="$vid" type="hidden" name="vid" value="{$vid}" />

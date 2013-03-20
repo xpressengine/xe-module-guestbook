@@ -1,11 +1,12 @@
 <include target="header.html" />
-<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+<div cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == 'modules/guestbook/tpl/guestbook_delete/1'" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
 	<p>{$XE_VALIDATOR_MESSAGE}</p>
 </div>
 <form action="./" method="get" ruleset="deleteGuestbook" class="section">
 	<input type="hidden" name="act" value="procGuestbookAdminDeleteGuestbook" />
 	<input type="hidden" name="page" value="{$page}" />
 	<input type="hidden" name="module_srl" value="{$module_info->module_srl}" />
+	<input type="hidden" name="xe_validator_id" value="modules/guestbook/tpl/guestbook_delete/1" />
     <h1>{$lang->confirm_delete}</h1>
 	<dl class="x_dl-horizontal">
 		<dt>{$lang->module_name}</dt>
