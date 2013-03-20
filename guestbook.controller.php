@@ -33,6 +33,11 @@ class guestbookController extends guestbook {
 				return new Object(-1, 'msg_invalid_request');
 			}
 
+			if($this->module_srl != $item->module_srl)
+			{
+				return new Object(-1, 'msg_invalid_request');
+			}
+
 			if($item->member_srl)
 			{
 				if(!$logged_info || $logged_info->member_srl != $item->member_srl)
@@ -133,6 +138,10 @@ class guestbookController extends guestbook {
 		$oGuest = $output->data;
 
 		if(!$oGuest) return new Object(-1,'msg_invalid_request');
+		if($oGuest->module_srl != $this->module_srl)
+		{
+			return new Object(-1, 'msg_invalid_request');
+		}
 
 		$logged_info = Context::get('logged_info');
 		//check grant
