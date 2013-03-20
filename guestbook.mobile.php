@@ -14,10 +14,10 @@ class guestbookMobile extends guestbookView {
                 $this->module_info->mskin = 'grayScale';
                 $template_path = sprintf("%sm.skins/%s/",$this->module_path, $this->module_info->mskin);
             }
-            $this->setTemplatePath($template_path);   
+            $this->setTemplatePath($template_path);
 
 			// load guestbook.js
-			Context::addJsFile($this->module_path.'tpl/js/guestbook.js');	
+			Context::addJsFile($this->module_path.'tpl/js/guestbook.js');
 		}
 
 		function dispGuestbookContent() {
@@ -30,7 +30,7 @@ class guestbookMobile extends guestbookView {
 				$commentList = $commentList->data;
 				$guestbook_list [$key]->commentCount = count($commentList);
 			}
-			
+
 			Context::set('guestbook_list',$guestbook_list);
 		}
 
@@ -51,11 +51,12 @@ class guestbookMobile extends guestbookView {
 			$vars = Context::getRequestVars();
 			$guestbook_item_srl = $vars->guestbook_item_srl;
 			$oGuestbookModel = &getModel('guestbook');
-			$guestbook_item = $oGuestbookModel->getGuestbookItem($guestbook_item_srl);
+			$output = $oGuestbookModel->getGuestbookItem($guestbook_item_srl);
+			$guestbook_item = $output->data;
 			if($guestbook_item&&!$guestbook_item->parent_srl) $guestbook_item->parent_srl = $guestbook_item->guestbook_item_srl;
 
 			Context::set('guestbook_item',$guestbook_item);
-			
+
 			 $this->setTemplateFile('add_guestbook_item');
 
 		 }

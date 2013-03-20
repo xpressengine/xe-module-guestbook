@@ -111,7 +111,7 @@ class guestbookController extends guestbook {
 			if($returnAct == "dispGuestbookContent")
 				$returnUrl = Context::get('success_return_url') ? Context::get('success_return_url') : getNotEncodedUrl('', 'mid', $this->module_info->mid, 'act', 'dispGuestbookContent');
 			if($returnAct == "displayItemInfo"){
-				$parent_srl = Context::get("parent_srl");
+				$parent_srl = Context::get("parent_srl") ? Context::get("parent_srl") : $obj->guestbook_item_srl;
 				$returnUrl = Context::get('success_return_url') ? Context::get('success_return_url') : getNotEncodedUrl('', 'mid', $this->module_info->mid, 'act', 'displayItemInfo','guestbook_item_srl', $parent_srl);
 			}
 			header('location:'.$returnUrl);
