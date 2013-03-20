@@ -11,7 +11,7 @@
 	<li cond="$module=='admin'" class="x_active"|cond="$act=='dispGuestbookAdminContent'"><a href="{getUrl('act','dispGuestbookAdminContent','module_srl','')}">{$lang->cmd_guestbook_list}</a></li>
 	<li cond="$module!='admin'"><a href="{getUrl('act','')}">{$lang->cmd_back}</a></li>
 	<li cond="$module_srl" class="x_active"|cond="$act=='dispGuestbookAdminGuestbookInfo'"><a href="{getUrl('act','dispGuestbookAdminGuestbookInfo','type','')}">{$lang->cmd_guestbook_info}</a></li>
-	<li class="x_active"|cond="$act=='dispGuestbookAdminGrantInfo'"><a href="{getUrl('act','dispGuestbookAdminGrantInfo')}">{$lang->cmd_manage_grant}</a></li>
+	<li cond="$module_srl" class="x_active"|cond="$act=='dispGuestbookAdminGrantInfo'"><a href="{getUrl('act','dispGuestbookAdminGrantInfo')}">{$lang->cmd_manage_grant}</a></li>
 </ul>
 
 
