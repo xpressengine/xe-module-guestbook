@@ -16,6 +16,7 @@
     <form action="./" method="get" id="fo_search" class="srch" no-error-return-url="true">
         <fieldset>
         <legend>Search</legend>
+        	<input type="hidden" name="act" value="" />
             <input cond="$vid" type="hidden" name="vid" value="{$vid}" />
             <input type="hidden" name="mid" value="{$mid}" />
             <input type="hidden" name="category" value="{htmlspecialchars($category)}" />
