@@ -122,7 +122,7 @@
 		<label for="lang_header_text" class="x_control-label">{$lang->header_text}</label>
 		<div class="x_controls">
 			{@$use_multilang_textarea = true}
-			<textarea name="header_text" id="header_text" class="lang_code" rows="4" cols="42">{$module_info->header_text}</textarea>
+			<textarea name="header_text" id="header_text" class="lang_code" rows="4" cols="42">{htmlspecialchars($module_info->header_text)}</textarea>
 			<a href="#about_header_text" class="x_icon-question-sign" data-toggle style="vertical-align:top;margin-top:5px">{$lang->help}</a>
 			<p class="x_help-block" id="about_header_text" hidden>{$lang->about_header_text}</p>
 		</div>
@@ -130,7 +130,7 @@
 	<div class="x_control-group">
 		<label for="lang_footer_text" class="x_control-label">{$lang->footer_text}</label>
 		<div class="x_controls">
-			<textarea name="footer_text" id="footer_text" class="lang_code" rows="4" cols="42">{$module_info->footer_text}</textarea>
+			<textarea name="footer_text" id="footer_text" class="lang_code" rows="4" cols="42">{htmlspecialchars($module_info->footer_text)}</textarea>
 			<a href="#about_footer_text" class="x_icon-question-sign" data-toggle style="vertical-align:top;margin-top:5px">{$lang->help}</a>
 			<p class="x_help-block" id="about_footer_text" hidden>{$lang->about_footer_text}</p>
 		</div>
