@@ -163,12 +163,12 @@
 
 <div cond="$page_navigation" class="pagination">
 	<a href="{getUrl('page','','guestbook_item_srl','','division',$division,'last_division',$last_division)}" class="prevEnd">{$lang->first_page}</a> 
-	<a href="#" class="btn_prevEnd"><span>prev</span></a> 
+	 
 	<block loop="$page_no = $page_navigation->getNextPage()">
 		<strong cond="$page == $page_no">{$page_no}</strong> 
 		<a cond="$page != $page_no" href="{getUrl('page',$page_no,'question_srl','','division',$division,'last_division',$last_division)}">{$page_no}</a>
 	</block>
-	<a href="#" class="btn_nextEnd"><span>next</span></a>
+	
 	<a href="{getUrl('page',$page_navigation->last_page,'question_srl','','division',$division,'last_division',$last_division)}" class="nextEnd">{$lang->last_page}</a>
 </div>
 
