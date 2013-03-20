@@ -11,7 +11,7 @@
 <div cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == 'modules/guestbook/skins/xe_guestbook_official/guestbook/1'" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
 	<p>{$XE_VALIDATOR_MESSAGE}</p>
 </div>
-<div class="replyForm" cond="$grant->write">
+<div class="replyForm" cond="$grant->write && !$modify && !$reply">
 	<form method="post" action="./" ruleset="insertGuestbookitem" id="fo_guestbookitem_insert">
 		<input type="hidden" name="act" value="procGuestbookInsertGuestbookItem" />
 		<input name="mid" type="hidden" value="{$mid}" />
@@ -44,7 +44,7 @@
 <div class="feedback reply">
 	<ol cond="$guestbook_list" class="feedbackOrder">
 		<block loop="$guestbook_list => $key, $val">
-			<li  cond="$modify == $val->guestbook_item_srl" class="item replyForm">
+			<li id="guestbook_{$val->guestbook_item_srl}" cond="$modify == $val->guestbook_item_srl" class="item replyForm">
 				<div cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == 'modules/guestbook/skins/xe_guestbook_official/guestbook/2'" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
 					<p>{$XE_VALIDATOR_MESSAGE}</p>
 				</div>
@@ -53,6 +53,7 @@
 					<input name="mid" type="hidden" value="{$mid}" />
 					<input type="hidden" name="guestbook_item_srl" value="{$val->guestbook_item_srl}" />
 					<input type="hidden" name="xe_validator_id" value="modules/guestbook/skins/xe_guestbook_official/guestbook/2" />
+					<input type="hidden" name="error_return_url" value="{getRequestUriByServerEnviroment()}#guestbook_{$val->guestbook_item_srl}" />
 					<fieldset>
 						<textarea class="inputTextarea" name="content" rows="5" cols="50">{@ $guestbook_content = strip_tags($val->content)}{$guestbook_content}</textarea>
 					</fieldset>
@@ -69,6 +70,7 @@
 						<input name="password" type="password" class="inputText pw" value="Password" title="Password" />
 						<div class="input_submit2">
 							<input name="submit" type="submit" value="Modify" class="inputSubmit2" />
+							<input name="submit" type="button" value="Cancel" class="inputSubmit2" onclick="document.location.href=current_url.setQuery('modify', '')" />
 						</div>
 					</block>
 				</form>							
@@ -95,8 +97,8 @@
 						<span class="date">{zdate($val->regdate,'Y.m.d')} <span class="hhmm">{zdate($val->regdate,'H:i')}</span></span>
 						<ul class="reAction" id="{$val->guestbook_item_srl}_re">
 							<li>
-								<a href="{getUrl('modify','','reply',$val->guestbook_item_srl)}#gusetbook_{$val->guestbook_item_srl}" cond="$val->parent_srl==0 && $grant->write_reply">{$lang->cmd_reply}</a>
-								<a href="{getUrl('reply','','modify',$val->guestbook_item_srl)}#gusetbook_{$val->guestbook_item_srl}" cond="$val->member_srl == 0 || $grant->manager || ($val->member_srl && $logged_info->member_srl == $val->member_srl)">{$lang->cmd_modify}</a>
+								<a href="{getUrl('modify','','reply',$val->guestbook_item_srl)}#guestbook_{$val->guestbook_item_srl}" cond="$val->parent_srl==0 && $grant->write_reply">{$lang->cmd_reply}</a>
+								<a href="{getUrl('reply','','modify',$val->guestbook_item_srl)}#guestbook_{$val->guestbook_item_srl}" cond="$val->member_srl == 0 || $grant->manager || ($val->member_srl && $logged_info->member_srl == $val->member_srl)">{$lang->cmd_modify}</a>
 								<block cond="$grant->manager || $logged_info->member_srl == $val->member_srl || $val->member_srl === '0'">
 								<!--@if($val->member_srl !== '0' || $grant->manager)-->
 								<a onclick="if(confirm('{$lang->confirm_delete}')) deleteGuestbookItem({$val->guestbook_item_srl});">{$lang->cmd_delete}</a>
@@ -124,7 +126,7 @@
 					</div>
 				</div>
 			</li>
-			<li cond="$reply == $val->guestbook_item_srl && $grant->write_reply" class="item replyForm">
+			<li id="guestbook_{$val->guestbook_item_srl}" cond="$reply == $val->guestbook_item_srl && $grant->write_reply" class="item replyForm">
 				<div cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == 'modules/guestbook/skins/xe_guestbook_official/guestbook/3'" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
 					<p>{$XE_VALIDATOR_MESSAGE}</p>
 				</div>
@@ -133,6 +135,7 @@
 					<input name="mid" type="hidden" value="{$mid}" />
 					<input type="hidden" name="parent_srl" value="{$val->guestbook_item_srl}" />
 					<input type="hidden" name="xe_validator_id" value="modules/guestbook/skins/xe_guestbook_official/guestbook/3" />
+					<input type="hidden" name="error_return_url" value="{getRequestUriByServerEnviroment()}#guestbook_{$val->guestbook_item_srl}" />
 					<fieldset>
 						<textarea class="inputTextarea" name="content" rows="5" cols="50"></textarea>
 					</fieldset>
@@ -149,6 +152,7 @@
 						<input name="password" type="password" class="inputText pw" value="Password" title="Password" />
 						<div class="input_submit2">
 							<input name="submit" type="submit" value="Reply" class="inputSubmit2" />
+							<input name="submit" type="button" value="Cancel" class="inputSubmit2" onclick="document.location.href=current_url.setQuery('reply', '')" />
 						</div>
 					</block>
 				</form>
