@@ -1,0 +1,9 @@
+<load target="css/guestbook.css" />
+<div class="guestbook">
+	{$module_info->header_text}
+    <div class="guestbookHeader">
+		<div cond="$module_info->mid" class="guestbookTitle">
+			<h2 class="guestbookTitleText">Guestbook</h2>
+				<a cond="$grant->manager" class="setup" href="{getUrl('act','dispGuestbookAdminGuestbookInfo')}">{$lang->cmd_setup}</a>
+		</div>
+    </div>

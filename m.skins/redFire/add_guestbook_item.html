@@ -1,0 +1,40 @@
+<include target="_header.html" />
+
+<div class="mod_containter">
+	<div cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == 'modules/guestbook/m.skins/blueFly/add_guestbook_item/1'" class="message {$XE_VALIDATOR_MESSAGE_TYPE}" style="margin-left:5px;margin-right:5px">
+		<p>{$XE_VALIDATOR_MESSAGE}</p>
+	</div>
+	<form action="#" method="post" class="form">
+		<input type="hidden" name="act" value="procGuestbookInsertGuestbookItem" />
+		<input name="mid" type="hidden" value="{$mid}" />
+		<input name="guestbook_item_srl" type="hidden" value="{$guestbook_item->guestbook_item_srl}" cond="$guestbook_item" />
+		<input name="parent_srl"  type="hidden" value="{$guestbook_item->parent_srl}"  cond="$guestbook_item"/>
+		<input name="returnAct" type="hidden" value="displayItemInfo" cond="$guestbook_item"/>
+		<input name="xe_validator_id" type="hidden" value="modules/guestbook/m.skins/blueFly/add_guestbook_item/1" />
+		<fieldset>
+		<legend class="blind">add message</legend>
+		<block cond="$is_logged">
+			<input name="member_srl" type="hidden" value="{$logged_info->member_srl}" />
+		</block>
+		<block cond="!($is_logged)">
+			<div class="form_element">
+				<label for="user_name">Username</label><input name="user_name" type="text" id="username" placeholder="Username" class="input">
+			</div>
+			<div class="form_element">
+				<label for="email">Email</label><input name="email_address" type="text" id="email" placeholder="Email Address" class="input">
+			</div>
+			<div class="form_element">
+				<label for="pwd">Password</label><input name="password" type="password" id="pwd" placeholder="Password" class="input">
+			</div>
+		</block>
+		<div class="form_element">
+			<label for="message">Message</label>
+			<textarea name="content" cols="30" rows="15" id="message" placeholder="Leave your message here" class="textarea2">{$guestbook_item->content}</textarea>
+		</div>
+		<div class="btn_area3">
+			<input type="submit" value="Add Message"|cond="!$guestbook_item" value="Update Message"|cond="$guestbook_item"class="btn_submit2">
+			<a href="javascript:void(history.back())" class="btn_cls2">Cancel</a>
+		</div>
+		</fieldset>
+	</form>
+</div>

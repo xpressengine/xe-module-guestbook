@@ -1,0 +1,12 @@
+/*.adminSearch{margin:1em 0}
+.adminSearch fieldset{padding:6px 10px;vertical-align:text-top;}
+.adminSearch fieldset label{display:inline-block;padding:5px 5px 0;vertical-align:top}
+.adminSearch fieldset span.button{height:25px;overflow:hidden}
+.adminSearch fieldset span.button input{height:24px}
+.btnArea span.btn{height:25px;overflow:hidden}
+.btnArea span.btn input{height:24px;}
+.adminSearch .inputTypeText{border:1px solid #B7B7B7;height:20px}
+.faq_search_form fieldset span.button input{height:24px;}
+div.table input.inputTypeText{width:280px;height:20px;padding-top:2px;margin:2px 0;border:1px solid #b7b7b7;border-right-color:#e1e1e1;border-bottom-color:#e1e1e1;}
+
+div.table td p{white-space:normal;width:100%;}*/

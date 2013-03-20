@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<lang>
+	<item name="guestbook">
+		<value xml:lang="ko"><![CDATA[방명록]]></value>
+		<value xml:lang="en"><![CDATA[Guestbook]]></value>
+		<value xml:lang="zh-CN"><![CDATA[留言簿]]></value>
+		<value xml:lang="tr"><![CDATA[Ziyaretçi Defteri]]></value>
+	</item>
+	<item name="guestbook_management">
+		<value xml:lang="ko"><![CDATA[방명록 관리]]></value>
+		<value xml:lang="en"><![CDATA[Guestbook Management]]></value>
+		<value xml:lang="zh-CN"><![CDATA[留言簿管理]]></value>
+		<value xml:lang="tr"><![CDATA[Ziyaretçi Defterini Düzenle]]></value>
+	</item>
+	<item name="about_guestbook">
+		<value xml:lang="ko"><![CDATA[이 모듈은 방명록 페이지 관리와 생성을 위한 것 입니다.]]></value>
+		<value xml:lang="en"><![CDATA[This module is for creating and managing Guestbook pages.]]></value>
+		<value xml:lang="zh-CN"><![CDATA[此模块用于搭建和管理留言簿页面.]]></value>
+		<value xml:lang="tr"><![CDATA[Bu modül ziyaretçi defteri oluşturmak ve düzenlemek içindir.]]></value>
+	</item>
+	<item name="cmd_guestbook_list">
+		<value xml:lang="ko"><![CDATA[방명록 리스트]]></value>
+		<value xml:lang="en"><![CDATA[Guestbook List]]></value>
+		<value xml:lang="zh-CN"><![CDATA[留言簿列表]]></value>
+		<value xml:lang="tr"><![CDATA[Ziyaretçi Defteri Listesi]]></value>
+	</item>
+	<item name="cmd_create_guestbook">
+		<value xml:lang="ko"><![CDATA[새 방명록 생성]]></value>
+		<value xml:lang="en"><![CDATA[Create a new Guestbook]]></value>
+		<value xml:lang="zh-CN"><![CDATA[新建留言簿]]></value>
+		<value xml:lang="TR"><![CDATA[Ziyaretçi Defteri Oluştur]]></value>
+	</item>
+	<item name="cmd_guestbook_info">
+		<value xml:lang="ko"><![CDATA[방명록 정보]]></value>
+		<value xml:lang="en"><![CDATA[Guestbook Info]]></value>
+		<value xml:lang="zh-CN"><![CDATA[留言簿信息]]></value>
+		<value xml:lang="tr"><![CDATA[Ziyaretci defteri Info]]></value>
+	</item>
+	<item name="order_target">
+		<value xml:lang="ko"><![CDATA[정렬]]></value>
+		<value xml:lang="en"><![CDATA[Sorting Target]]></value>
+		<value xml:lang="zh-CN"><![CDATA[排序]]></value>
+		<value xml:lang="tr"><![CDATA[Sıralama Hedefi]]></value>
+	</item>
+	<item name="order_asc">
+		<value xml:lang="ko"><![CDATA[오름차순으로]]></value>
+		<value xml:lang="en"><![CDATA[Ascending order]]></value>
+		<value xml:lang="zh-CN"><![CDATA[递增排序]]></value>
+		<value xml:lang="tr"><![CDATA[Azalan Sıra]]></value>
+	</item>
+	<item name="order_desc">
+		<value xml:lang="ko"><![CDATA[내림차순으로]]></value>
+		<value xml:lang="en"><![CDATA[Descending order]]></value>
+		<value xml:lang="zh-CN"><![CDATA[递减排序]]></value>
+		<value xml:lang="tr"><![CDATA[Azalan Sıra]]></value>
+	</item>
+	<item name="document_srl">
+		<value xml:lang="ko"><![CDATA[Document No.]]></value>
+		<value xml:lang="en"><![CDATA[Document No.]]></value>
+		<value xml:lang="zh-CN"><![CDATA[Document No.]]></value>
+		<value xml:lang="tr"><![CDATA[Döküman No.]]></value>
+	</item>
+</lang>

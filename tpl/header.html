@@ -1,0 +1,17 @@
+<load target="css/guestbook_admin.css" />
+<div class="x_page-header">
+	<h1>
+		{$lang->guestbook_management}
+		<span class="path" cond="$module_info->mid">&gt; <a href="{getSiteUrl($module_info->domain,'','mid',$module_info->mid)}" target="_blank"|cond="$module=='admin'">{$module_info->mid}</a><span cond="$module_info->is_default=='Y'">({$lang->is_default})</span></span>
+		<a href="#about_guestbook" data-toggle class="x_icon-question-sign">{$lang->help}</a>
+	</h1>
+</div>
+<p class="x_alert x_alert-info" id="about_guestbook" hidden>{nl2br($lang->about_guestbook)}</p>
+<ul cond="$module_info && $act != 'dispGuestbookAdminDeleteGuestbook'" class="x_nav x_nav-tabs">
+	<li cond="$module=='admin'" class="x_active"|cond="$act=='dispGuestbookAdminContent'"><a href="{getUrl('act','dispGuestbookAdminContent','module_srl','')}">{$lang->cmd_guestbook_list}</a></li>
+	<li cond="$module!='admin'"><a href="{getUrl('act','')}">{$lang->cmd_back}</a></li>
+	<li cond="$module_srl" class="x_active"|cond="$act=='dispGuestbookAdminGuestbookInfo'"><a href="{getUrl('act','dispGuestbookAdminGuestbookInfo','type','')}">{$lang->cmd_guestbook_info}</a></li>
+	<li cond="$module_srl" class="x_active"|cond="$act=='dispGuestbookAdminGrantInfo'"><a href="{getUrl('act','dispGuestbookAdminGrantInfo')}">{$lang->cmd_manage_grant}</a></li>
+</ul>
+
+

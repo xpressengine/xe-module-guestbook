@@ -1,0 +1,30 @@
+<include target="_header.html" />
+
+<div class="mod_containter">
+	<ul class="document_list">
+	<li loop="$guestbook_list => $key, $document" cond="!$document->parent_srl">
+		{@ 
+			$oMemberModel = &getModel('member');
+			$memberConfig = $oMemberModel->getMemberConfig();
+			$memberImage = $oMemberModel->getProfileImage($document->member_srl);
+		}
+		<div class="user_pic">
+			<a href="{getUrl('act','displayItemInfo','guestbook_item_srl',$document->guestbook_item_srl)}">
+		      <img cond="$memberImage" src="{$memberImage->src}"|cond="$memberConfig->profile_image == 'Y'" width="48" height="54" alt="Platform Develpment Center" class="author_img">
+			  <img cond="!($memberImage)" border="0" src="./img/default_member.gif" width="48" height="54"   alt="Platform Develpment Center" class="author_img">
+			</a>
+		</div>
+		<div class="user_message">
+			<dl>
+			<dt><a href="{getUrl('act','displayItemInfo','guestbook_item_srl',$document->guestbook_item_srl)}">{$document->nick_name}</a></dt>
+			<dd class="message_detail"><a href="{getUrl('act','displayItemInfo','guestbook_item_srl',$document->guestbook_item_srl)}">{cut_str($document->content,90)}</a></dd>
+			<dd><span class="date">{zdate($document->regdate,'Y-m-d')}</span><span class="time">{zdate($document->regdate,'H:i')}</span></dd>
+			<dd class="reply"><span class="blind">the number of guests replying for this message is </span><span class="reply_num">{$document->commentCount}</span></dd>
+			</dl>
+		</div>
+	</li>
+	</ul>
+	<div class="view_more">
+		<a href="#" onclick="return false" id="getMore">more<span class="more"></span></a><a href="#" class="top">Top</a>
+	</div>
+</div>
