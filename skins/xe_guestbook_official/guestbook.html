@@ -64,8 +64,8 @@
 						</div>
 					</block>
 					<block cond="!($is_logged)">
-						<input name="user_name" type="text" class="inputText name" value="Username" title="Username"/>
-						<input name="email_address" type="text" class="inputText name" value="Email" title="Email"/>
+						<input name="user_name" type="text" class="inputText name" value="{$val->user_name ? $val->user_name : 'Username'}" title="Username"/>
+						<input name="email_address" type="text" class="inputText name" value="{$val->user_name ? $val->email_address : 'Email'}" title="Email"/>
 						<input name="password" type="password" class="inputText pw" value="Password" title="Password" />
 						<div class="input_submit2">
 							<input name="submit" type="submit" value="Modify" class="inputSubmit2" />
@@ -96,7 +96,7 @@
 						<ul class="reAction" id="{$val->guestbook_item_srl}_re">
 							<li>
 								<a href="{getUrl('modify','','reply',$val->guestbook_item_srl)}#gusetbook_{$val->guestbook_item_srl}" cond="$val->parent_srl==0 && $grant->write_reply">{$lang->cmd_reply}</a>
-								<a href="{getUrl('reply','','modify',$val->guestbook_item_srl)}#gusetbook_{$val->guestbook_item_srl}" cond="$val->member_srl && $logged_info->member_srl == $val->member_srl">{$lang->cmd_modify}</a>
+								<a href="{getUrl('reply','','modify',$val->guestbook_item_srl)}#gusetbook_{$val->guestbook_item_srl}" cond="$val->member_srl == 0 || $grant->manager || ($val->member_srl && $logged_info->member_srl == $val->member_srl)">{$lang->cmd_modify}</a>
 								<block cond="$grant->manager || $logged_info->member_srl == $val->member_srl || $val->member_srl === '0'">
 								<!--@if($val->member_srl !== '0' || $grant->manager)-->
 								<a onclick="if(confirm('{$lang->confirm_delete}')) deleteGuestbookItem({$val->guestbook_item_srl});">{$lang->cmd_delete}</a>

@@ -14,12 +14,40 @@ class guestbookController extends guestbook {
 	}
 
 	/**
-	 * @brief insert Guestbook Item (document) 
+	 * @brief insert Guestbook Item (document)
 	 **/
 	function procGuestbookInsertGuestbookItem(){
 		$val = Context::gets('mid','user_name','email_address','password','content','parent_srl','guestbook_item_srl','page');
 		if($val->parent_srl>0 && !$this->grant->write_reply) return new Object(-1,'msg_not_permitted');
 		if(!$val->parent_srl && !$this->grant->write) return new Object(-1,'msg_not_permitted');
+
+		// check perm.
+		$logged_info = Context::get('logged_info');
+		if(!$this->grant->manager && $val->guestbook_item_srl > 0)
+		{
+			$oModel = getModel('guestbook'); /* @var $oModel guestbookModel */
+			$output = $oModel->getGuestbookItem($val->guestbook_item_srl);
+			$item = $output->data;
+			if(!$item)
+			{
+				return new Object(-1, 'msg_invalid_request');
+			}
+
+			if($item->member_srl)
+			{
+				if(!$logged_info || $logged_info->member_srl != $item->member_srl)
+				{
+					return new Object(-1, 'msg_not_permitted');
+				}
+			}
+			else
+			{
+				if(md5($val->password) != $item->password)
+				{
+					return new Object(-1, 'msg_not_permitted');
+				}
+			}
+		}
 
 		// Call a trigger (before)
 		$obj = $val;
@@ -44,7 +72,6 @@ class guestbookController extends guestbook {
 		}else{
 			// if logined
 			if(Context::get('is_logged')) {
-				$logged_info = Context::get('logged_info');
 				$obj->member_srl = $logged_info->member_srl;
 				$obj->user_id = $logged_info->user_id;
 				$obj->user_name = $logged_info->user_name;
@@ -57,7 +84,7 @@ class guestbookController extends guestbook {
 				$obj->nick_name = $val->user_name;
 				$obj->email_address = $val->email_address;
 				$obj->password = md5($val->password);
-				$oGuestbookModel = &getModel('guestbook');		
+				$oGuestbookModel = &getModel('guestbook');
 			}
 			$obj->guestbook_item_srl = getNextSequence();
 			// reply
@@ -106,13 +133,13 @@ class guestbookController extends guestbook {
 		$oGuest = $output->data;
 
 		if(!$oGuest) return new Object(-1,'msg_invalid_request');
-		
+
 		$logged_info = Context::get('logged_info');
 		//check grant
 		//is_logged
 		if(!$this->grant->manager)
 		{
-			if($oGuest->member_srl != $logged_info->member_srl) return new Object(-1,'msg_not_permitted');
+			if($oGuest->member_srl && $oGuest->member_srl != $logged_info->member_srl) return new Object(-1,'msg_not_permitted');
 			if($password_ck && $oGuest->member_srl === '0' && $oGuest->password != md5($password)) return new Object(-1,'msg_not_permitted');
 		}
 
@@ -125,7 +152,7 @@ class guestbookController extends guestbook {
 				if(!$poutput->toBool()) return $poutput;
 			}
 		}
-		
+
 		$obj->guestbook_item_srl = $guestbook_item_srl;
 		$output = executeQuery('guestbook.deleteGuestbookItem', $obj);
 		if(!$output->toBool()) return $output;
