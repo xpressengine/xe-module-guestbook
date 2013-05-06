@@ -47,6 +47,8 @@
             $order_target['last_update'] = Context::getLang('last_update');
             Context::set('order_target', $order_target);
 
+			$oSecurity = new Security();
+			$oSecurity->encodeHTML('module_info.' , 'module_category..');
         }
        
 		// display guestbook module admin panel 
@@ -72,6 +74,9 @@
             Context::set('page', $output->page);
             Context::set('guestbook_list', $output->data);
             Context::set('page_navigation', $output->page_navigation);
+
+			$oSecurity = new Security();
+			$oSecurity->encodeHTML('guestbook_list..');
 
             // set template file
             $this->setTemplateFile('index');
@@ -104,6 +109,10 @@
 
 			$mobile_layout_list = $oLayoutModel->getLayoutList(0,"M");
 			Context::set('mlayout_list', $mobile_layout_list);
+
+			$oSecurity = new Security();
+			$oSecurity->encodeHTML('skin_list..', 'mskin_list..');
+			$oSecurity->encodeHTML('layout_list..', 'mlayout_list..');
 
 			$this->setTemplateFile('guestbook_insert');
         }
