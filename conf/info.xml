@@ -6,8 +6,8 @@
     <description xml:lang="ko">사용자에게 방명록을 제공하며, 관리자는 방명록 생성, 삭제, 관리가 가능합니다.</description>
     <description xml:lang="zh-CN">给用户提供‘留言簿’功能，将包含‘留言簿’模块的生成/删除及管理等管理员功能。</description>
     <description xml:lang="en">Provide Guestbook module to XE users, contains administrator functions such as create, delete, manage Guestbook module etc.</description>
-    <version>1.7.0</version>
-    <date>2013-03-18</date>
+    <version>1.7.0.1</version>
+    <date>2013-05-21</date>
     <category>service</category>
 
     <author email_address="developers@xpressengine.com" link="http://www.xpressengine.com/">
