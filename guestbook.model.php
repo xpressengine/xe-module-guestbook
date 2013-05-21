@@ -45,8 +45,6 @@
 
             if(!$output->toBool() || !$output->data) return array();
 
-            $oSecurity = new Security($output);
-            $oSecurity->encodeHTML('data..email_address', 'data..homepage');
             return $output;
         }
 
@@ -63,8 +61,6 @@
 
             if(!$output->toBool() || !$output->data) return array();
 
-            $oSecurity = new Security($output);
-            $oSecurity->encodeHTML('data..email_address', 'data..homepage');
             return $output;
         }
 

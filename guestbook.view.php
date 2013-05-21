@@ -102,7 +102,7 @@
             Context::set('page_navigation', $output->page_navigation);
 
 			$security = new Security();
-			$security->encodeHTML('guestbook_list..content');
+			$security->encodeHTML('guestbook_list..');
 
 		}
 
