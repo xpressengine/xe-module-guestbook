@@ -4,6 +4,9 @@
 	$oMemberModel = &getModel('member');
 	$memberConfig = $oMemberModel->getMemberConfig();
 	$memberImage = $oMemberModel->getProfileImage($guestbook_item->member_srl);
+
+	$security = new Security();
+	$security->encodeHTML('guestbook_item..','comment_list..');
 }
 <div class="mod_containter">
 	<div class="message_cont">
