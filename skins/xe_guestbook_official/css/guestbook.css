@@ -27,8 +27,8 @@ fieldset{padding-right:10px;padding-bottom:0;padding-left:0;border:0}
 .feedback .feedbackOrder .img{float:left;margin:0 20px 5px 0}
 .feedback .feedbackOrder .img img{border:1px solid #c1c1c1;float:left}
 .feedback.reply .item2{overflow:hidden;position:relative;margin-bottom:6px;padding:10px 10px;border:1px solid #d6d6d6;*zoom:1}
-.feedback .meta{padding:0 0 0 91px}
-.feedback .date{float:left;margin:0 24px 0 0;color:#666;font-size:11px}
+.feedback .meta{padding:0}
+.feedback .date, .feedback .ip{float:left;margin:0 24px 0 0;color:#666;font-size:11px}
 .feedback .reAction{margin:0;padding:0;white-space:nowrap;list-style:none outside none;position:absolute;right:13px;top:12px}
 .feedback .reAction li{display:inline;float:left;padding:0 8px 0 5px;vertical-align:middle}
 .feedback .reAction li.last{background:none}

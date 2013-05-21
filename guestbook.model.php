@@ -17,7 +17,7 @@
 		 * @brief get guestbook item list
 		 **/
         function getGuestbookItemList($vars){
-            // set sorting infor 
+            // set sorting infor
             if(!in_array($vars->sort_index, array('guestbook_item_srl','list_order','last_update'))) $vars->sort_index = 'guestbook_item_srl';
             if(!in_array($vars->order_type, array('desc','asc'))) $vars->order_type = 'asc';
 
@@ -49,7 +49,7 @@
         }
 
         function getChildGuestbookItemList($vars){
-            // set sorting infor 
+            // set sorting infor
             if(!in_array($vars->sort_index, array('guestbook_item_srl','list_order','last_update'))) $vars->sort_index = 'guestbook_item_srl';
             if(!in_array($vars->order_type, array('desc','asc'))) $vars->order_type = 'asc';
 
@@ -70,7 +70,7 @@
 		function getMemberInfo($vars){
 			$args->email_address = $vars->email_address;
 			$args->password = $vars->password;
-			
+
 			$output = executeQueryArray('guestbook.getMemberInfo',$args);
 			if(!$output->toBool() || !$output->data) return array();
 

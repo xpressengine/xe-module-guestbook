@@ -17,7 +17,7 @@ class guestbookController extends guestbook {
 	 * @brief insert Guestbook Item (document)
 	 **/
 	function procGuestbookInsertGuestbookItem(){
-		$val = Context::gets('mid','user_name','email_address','password','content','parent_srl','guestbook_item_srl','page');
+		$val = Context::gets('mid','user_name','email_address','homepage','password','content','parent_srl','guestbook_item_srl','page');
 		if($val->parent_srl>0 && !$this->grant->write_reply) return new Object(-1,'msg_not_permitted');
 		if(!$val->parent_srl && !$this->grant->write) return new Object(-1,'msg_not_permitted');
 
@@ -88,6 +88,9 @@ class guestbookController extends guestbook {
 				$obj->user_name = $val->user_name;
 				$obj->nick_name = $val->user_name;
 				$obj->email_address = $val->email_address;
+				$obj->homepage = $val->homepage;
+				if($obj->homepage &&  !preg_match('/^[a-z]+:\/\//i',$obj->homepage)) $obj->homepage = 'http://'.$obj->homepage;
+
 				$obj->password = md5($val->password);
 				$oGuestbookModel = &getModel('guestbook');
 			}
