@@ -94,6 +94,7 @@
 								<block cond="!$val->nick_name">{$val->email_address}</block>
 							</a>
 						</h4>
+						<span class="ip" cond="$grant->manager">({$val->ipaddress})</span>
 						<span class="date">{zdate($val->regdate,'Y.m.d')} <span class="hhmm">{zdate($val->regdate,'H:i')}</span></span>
 						<ul class="reAction" id="{$val->guestbook_item_srl}_re">
 							<li>
