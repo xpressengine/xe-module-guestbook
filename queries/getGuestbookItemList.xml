@@ -22,7 +22,7 @@
     </conditions>
     <navigation>
 		<index var="sort_index" default="guestbook.list_order" order="order_type" />
-		<index var="parent_srl" default="guestbook.parent_srl" order="asc" />
+		<index var="sort_index2" default="guestbook.parent_srl" order="asc" />
 		<list_count var="list_count" default="20" />
         <page_count var="page_count" default="10" />
         <page var="page" default="1" />
